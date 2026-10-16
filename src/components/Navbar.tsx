@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -9,15 +10,19 @@ import {
   ShoppingCart,
   X,
 } from "lucide-react";
-
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
+import { useCart } from "@/components/CartProvider";
+import { useWishlist } from "@/components/WishlistProvider";
 import UserMenu from "./UserMenu";
 
 export default function Navbar() {
   const router = useRouter();
+
+  const { count: cartCount } = useCart();
+  const { count: wishlistCount } = useWishlist();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,6 +34,7 @@ export default function Navbar() {
 
     if (!query) {
       router.push("/products");
+      setMobileMenuOpen(false);
       return;
     }
 
@@ -42,7 +48,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-base-300/70 bg-base-100/95 backdrop-blur-xl">
-      {/* Main navigation */}
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="flex h-[76px] items-center justify-between gap-4">
           {/* Brand */}
@@ -131,22 +136,39 @@ export default function Navbar() {
 
           {/* Right-side actions */}
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            {/* Desktop Wishlist */}
             <Link
               href="/wishlist"
-              aria-label="Wishlist"
+              aria-label={`Wishlist, ${wishlistCount} ${wishlistCount === 1 ? "item" : "items"}`}
               title="Wishlist"
-              className="hidden h-10 w-10 items-center justify-center rounded-xl text-base-content/70 transition-colors hover:bg-primary/10 hover:text-primary sm:flex"
+              className="relative hidden h-10 w-10 items-center justify-center rounded-xl text-base-content/70 transition-colors hover:bg-primary/10 hover:text-primary sm:flex"
             >
               <Heart className="h-[21px] w-[21px]" strokeWidth={1.8} />
+
+              {wishlistCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-[19px] min-w-[19px] items-center justify-center rounded-full bg-rose-500 px-1 text-[10px] font-bold leading-none text-white ring-2 ring-base-100">
+                  {wishlistCount > 99 ? "99+" : wishlistCount}
+                </span>
+              )}
             </Link>
 
+            {/* Desktop Shopping Cart */}
             <Link
               href="/cart"
-              aria-label="Shopping cart"
+              aria-label={`Shopping cart, ${cartCount} ${cartCount === 1 ? "item" : "items"}`}
               title="Shopping cart"
-              className="flex h-10 w-10 items-center justify-center rounded-xl text-base-content/70 transition-colors hover:bg-primary/10 hover:text-primary"
+              className="relative flex h-10 w-10 items-center justify-center rounded-xl text-base-content/70 transition-colors hover:bg-primary/10 hover:text-primary"
             >
-              <ShoppingCart className="h-[21px] w-[21px]" strokeWidth={1.8} />
+              <ShoppingCart
+                className="h-[21px] w-[21px]"
+                strokeWidth={1.8}
+              />
+
+              {cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-[19px] min-w-[19px] items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-extrabold leading-none text-secondary-content ring-2 ring-base-100">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
             </Link>
 
             <div className="ml-1 hidden h-8 w-px bg-base-300 sm:block" />
@@ -240,6 +262,7 @@ export default function Navbar() {
                 </span>
               </Link>
 
+              {/* Mobile Wishlist with live count */}
               <Link
                 href="/wishlist"
                 onClick={closeMobileMenu}
@@ -250,9 +273,16 @@ export default function Navbar() {
                   Wishlist
                 </span>
 
-                <ArrowRight className="h-4 w-4 opacity-40" />
+                {wishlistCount > 0 ? (
+                  <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-500 px-1.5 text-xs font-bold text-white">
+                    {wishlistCount > 99 ? "99+" : wishlistCount}
+                  </span>
+                ) : (
+                  <ArrowRight className="h-4 w-4 opacity-40" />
+                )}
               </Link>
 
+              {/* Mobile Cart with live count */}
               <Link
                 href="/cart"
                 onClick={closeMobileMenu}
@@ -263,7 +293,13 @@ export default function Navbar() {
                   Shopping Cart
                 </span>
 
-                <ArrowRight className="h-4 w-4 opacity-40" />
+                {cartCount > 0 ? (
+                  <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-secondary px-1.5 text-xs font-bold text-secondary-content">
+                    {cartCount > 99 ? "99+" : cartCount}
+                  </span>
+                ) : (
+                  <ArrowRight className="h-4 w-4 opacity-40" />
+                )}
               </Link>
             </div>
           </nav>
@@ -272,3 +308,4 @@ export default function Navbar() {
     </header>
   );
 }
+
