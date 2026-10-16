@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ Shohan Mart
 
-## Getting Started
+**Shohan Mart** is a modern e-commerce web application designed to provide a smooth and convenient online shopping experience. Users can explore products, browse categories, manage their shopping carts, save favourite products, and place orders through a user-friendly interface.
 
-First, run the development server:
+## ✨ Features
+
+* 🛒 **Product Browsing:** Explore a wide range of products.
+* 🔍 **Product Search:** Find products quickly and easily.
+* 🗂️ **Category Filtering:** Browse products by category.
+* ↕️ **Product Sorting:** Sort products by price, rating, and latest additions.
+* 🛍️ **Shopping Cart:** Add products to the cart and manage quantities.
+* ❤️ **Wishlist:** Save favourite products for later.
+* 📦 **Checkout System:** Enter customer information and place orders.
+* 👤 **Authentication:** Support for user authentication.
+* 🏪 **Seller Features:** Support for seller-related product management.
+* 🛠️ **Admin Features:** Designed to support administrative management.
+* 📱 **Responsive Design:** Works across desktop, tablet, and mobile devices.
+* 🎨 **Modern UI:** Clean interface with smooth interactions and loading animations.
+
+## 🧰 Technologies Used
+
+* **Next.js** — React framework for building the application.
+* **React** — Component-based user interface.
+* **TypeScript** — Type-safe JavaScript development.
+* **Tailwind CSS** — Utility-first styling.
+* **daisyUI** — UI components and styling utilities.
+* **MongoDB** — Database integration.
+* **Mongoose** — MongoDB object modelling.
+* **Better Auth** — Authentication.
+* **React Hot Toast** — User notifications.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+* Node.js
+* npm
+* MongoDB connection string
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+**2. Navigate to the project directory**
+
+```bash
+cd bangla_mart
+```
+
+**3. Install dependencies**
+
+```bash
+npm install
+```
+
+**4. Configure environment variables**
+
+Create a `.env` file in the project root and add the environment variables required by the application.
+
+Example:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+```
+
+Add any other environment variables required by your authentication and application configuration. Never commit real passwords, secret keys, or database credentials to GitHub.
+
+**5. Run the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To create a production build, run:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+To start the production server locally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```text
+bangla_mart/
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── products/
+│   │   ├── checkout/
+│   │   └── layout.tsx
+│   ├── components/
+│   ├── lib/
+│   └── models/
+├── .env
+├── package.json
+└── README.md
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎯 Project Goal
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The goal of Shohan Mart is to develop a modern and user-friendly e-commerce platform that makes online shopping easier while providing a foundation for product, order, seller, and administrative management.
+
+## 👨‍💻 Developer
+
+**Shohanur Rahman**
+
+Project: **Shohan Mart**

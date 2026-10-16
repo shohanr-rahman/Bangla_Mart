@@ -62,7 +62,7 @@ export default function Navbar() {
 
             <span className="flex flex-col">
               <span className="text-[21px] font-extrabold leading-tight tracking-[-0.8px] text-base-content">
-                Bangla<span className="text-primary">Mart</span>
+                Shohan_<span className="text-primary">Mart</span>
               </span>
 
               <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[1.7px] text-base-content/50">

@@ -86,7 +86,7 @@ export async function POST(request: Request) {
       item.quantity > 100
     ) {
       return NextResponse.json(
-        { message: "কার্টে পণ্যের তথ্য সঠিক নয়।" },
+        { message: "সোহান বিষয়টি বিবেচনা করবে।" },
         { status: 400 }
       );
     }
