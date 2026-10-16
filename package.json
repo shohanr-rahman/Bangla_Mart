@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
-    "better-auth": "^1.7.9",
+    "better-auth": "^1.7.10",
     "daisyui": "^5.7.50",
     "lucide-react": "^1.57.0",
     "mongodb": "^7.7.0",
@@ -31,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.1",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
